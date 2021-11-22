@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,7 +37,13 @@ public class SignupController {
 	}
 	
 	@PostMapping("/signup")
-	public String posetSignUp(@ModelAttribute SignupForm form) {
+	public String posetSignUp(Model model, Locale locale, @ModelAttribute SignupForm form, BindingResult bindingResult) {
+		// 入力チェック
+		if(bindingResult.hasErrors()) {
+			// 入力エラーがあった場合、ユーザー情報登録画面に戻る
+			return getSignUp(model, locale, form);
+		}
+		
 		log.info(form.toString());
 		// ログイン画面にリダイレクト
 		return "redirect:/login";
