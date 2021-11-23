@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.application.form.GroupOrder;
 import com.example.demo.application.form.SignupForm;
 import com.example.demo.application.service.UserApplicationService;
 
@@ -38,7 +39,7 @@ public class SignupController {
 	}
 	
 	@PostMapping("/signup")
-	public String posetSignUp(Model model, Locale locale, @ModelAttribute @Validated SignupForm form, BindingResult bindingResult) {
+	public String posetSignUp(Model model, Locale locale, @ModelAttribute @Validated(GroupOrder.class) SignupForm form, BindingResult bindingResult) {
 		// 入力チェック
 		if(bindingResult.hasErrors()) {
 			// 入力エラーがあった場合、ユーザー情報登録画面に戻る
