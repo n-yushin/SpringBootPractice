@@ -25,4 +25,10 @@
       #{role}
     )
   </insert>
+
+  <!-- ユーザー取得 -->
+  <!-- selectでは戻り値をresultTypeで指定するんだね -->
+  <select id="findMany" resultType="MUser">
+    select * from m_user
+  </select>
 </mapper>

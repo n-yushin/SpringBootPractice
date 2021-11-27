@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.application.service.UserApplicationService;
-import com.example.demo.domain.model.MUser;
-import com.example.demo.domain.service.UserService;
+import com.example.demo.domain.user.model.MUser;
+import com.example.demo.domain.user.service.UserService;
 import com.example.demo.form.GroupOrder;
 import com.example.demo.form.SignupForm;
 
@@ -46,6 +46,7 @@ public class SignupController {
 		// ユーザ登録画面に遷移
 		return "user/signup";
 	}
+
 	
 	/** ユーザー登録処理  */
 	@PostMapping("/signup")
