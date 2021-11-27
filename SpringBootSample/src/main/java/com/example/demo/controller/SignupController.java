@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.Locale;
 import java.util.Map;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.application.service.UserApplicationService;
+import com.example.demo.domain.model.MUser;
+import com.example.demo.domain.service.UserService;
 import com.example.demo.form.GroupOrder;
 import com.example.demo.form.SignupForm;
 
@@ -27,6 +30,12 @@ public class SignupController {
 	@Autowired
 	private UserApplicationService userApplicationService;
 	
+	@Autowired
+	private UserService userService;
+	
+	@Autowired
+	private ModelMapper modelMapper;
+	
 	/** ユーザ登録画面を表示 */
 	@GetMapping("/signup")
 	public String getSignUp(Model model, Locale locale, @ModelAttribute SignupForm form) {
@@ -38,8 +47,9 @@ public class SignupController {
 		return "user/signup";
 	}
 	
+	/** ユーザー登録処理  */
 	@PostMapping("/signup")
-	public String posetSignUp(Model model, Locale locale, @ModelAttribute @Validated(GroupOrder.class) SignupForm form, BindingResult bindingResult) {
+	public String postSignUp(Model model, Locale locale, @ModelAttribute @Validated(GroupOrder.class) SignupForm form, BindingResult bindingResult) {
 		// 入力チェック
 		if(bindingResult.hasErrors()) {
 			// 入力エラーがあった場合、ユーザー情報登録画面に戻る
@@ -47,6 +57,14 @@ public class SignupController {
 		}
 		
 		log.info(form.toString());
+		
+		// formをMUserクラスに変換
+		// ModelMapperのmapメソッドでフィールドの内容をコピー可能。（コピー先、コピー元のフィールド名が一致している必要がある）
+		MUser user = modelMapper.map(form, MUser.class);
+		
+		// ユーザー登録
+		userService.signUp(user);
+		
 		// ログイン画面にリダイレクト
 		return "redirect:/login";
 	}
