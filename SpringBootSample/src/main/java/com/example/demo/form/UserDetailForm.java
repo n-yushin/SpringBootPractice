@@ -1,4 +1,4 @@
-package com.example.demo.domain.user.model;
+package com.example.demo.form;
 
 import java.util.Date;
 
@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 @Data
-public class MUser {
+public class UserDetailForm {
 	private String userId;
 	private String password;
 	private String userName;
@@ -15,6 +15,5 @@ public class MUser {
 	private Date birthday;
 	private int age;
 	private int gender;
-	private int departmentId;
-	private String role;
+
 }

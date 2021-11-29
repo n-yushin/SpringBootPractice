@@ -10,9 +10,12 @@ import com.example.demo.domain.user.model.MUser;
 @Mapper // Mybatisでリポジトリを作成するためにはjavaのインターフェースに@Mapperアノテーションを付ける
 public interface UserMapper {
 	
-	/* ユーザー登録 */
+	/** ユーザー登録 */
 	public int insertOne(MUser user);
 	
-	/* ユーザー取得 */
+	/** ユーザー取得 */
 	public List<MUser> findMany();
+	
+	/** ユーザー取得（1件） */
+	public MUser findOne(String id);
 }

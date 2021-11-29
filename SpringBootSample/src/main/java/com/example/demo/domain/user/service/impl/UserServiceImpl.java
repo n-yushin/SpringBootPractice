@@ -29,4 +29,10 @@ public class UserServiceImpl implements UserService{
 		List<MUser> userList = mapper.findMany();
 		return userList;
 	}
+	
+	/** ユーザー取得（一件） */
+	@Override
+	public MUser getUserOne(String userId) {
+		return mapper.findOne(userId);
+	}
 }
