@@ -31,16 +31,21 @@ public class UserDetailController {
 		
 		// ユーザー情報を取得
 		MUser user = userService.getUserOne(userId);
-		user.setPassword("unchi");
+//		user.setPassword(null);
 		
 		// MUserをformに変換
 		form = modelMapper.map(user, UserDetailForm.class);
 		
 		// Modelに登録
-		model.addAttribute("UserDetailForm",form);
+		model.addAttribute("userDetailForm", form);
 		
 		// ログ
-		log.info("UserDetailFormの中身："+form.toString());
+		log.info("MUserの中身："+user.toString());
+//		log.info("UserDetailFormの中身："+form.toString());
+//		log.info("getter確認:"+form.getPassword());
+//		log.info("getter確認:"+form.getUserName());
+//		log.info("getter確認:"+form.getAge());
+		//form.getPassword();
 		
 		// ユーザー詳細画面を表示
 		return "user/detail";

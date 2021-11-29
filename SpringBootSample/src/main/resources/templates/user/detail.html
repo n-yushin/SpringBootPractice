@@ -18,27 +18,23 @@
                 <tbody>
                     <tr>
                         <th class="w-25">ユーザーID</th>
-                        <td th:text="*{userId}"></td>
-                        <!-- <input type="text" class="form-control" th:field="*{userId}" /> -->
+                        <td th:text="${userDetailForm.userId}"></td>
                     </tr>
                     <tr>
                         <th>パスワード</th>
-                        <td>
-                            <input type="text" class="form-control" th:field="*{password}" />
-                        </td>
+                        <td th:text="${userDetailForm.password}">
+                            <input type="text" class="form-control" th:field="${userDetailForm.password}" />
+                        </td >
                     </tr>
                     <tr>
                         <th>ユーザー名</th>
-                        <td>
-                            <input type="text" class="form-control" th:field="*{userName}" />
-                            <!-- <input type="text" class="form-control" id="userName" name="userName" th:value="${userDetailForm.userName}" /> -->
-                            <!-- <td th:text="'TEST'"></td> -->
-                        </td>
+                        <td th:text="${userDetailForm.userName}">
+                            <input type="text" class="form-control" th:field="${userDetailForm.userName}" />
+                        </td >
                     </tr>
                     <tr>
                         <th>誕生日</th>
                         <td th:text="*{#dates.format(birthday,'yyyy/MM/dd')}"></td>
-                        <!-- <td th:text="*{birthday}"></td> -->
                     </tr>
                     <tr>
                         <th>年齢</th>

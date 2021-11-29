@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService{
 	
 	/** ユーザー登録 */
 	@Override
-	public void signUp(MUser user) {
+	public void signup(MUser user) {
 		user.setDepartmentId(1); // 部署
 		user.setRole("ROLE_GENERAL"); // ロール
 		mapper.insertOne(user);

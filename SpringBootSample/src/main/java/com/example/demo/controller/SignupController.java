@@ -38,7 +38,7 @@ public class SignupController {
 	
 	/** ユーザ登録画面を表示 */
 	@GetMapping("/signup")
-	public String getSignUp(Model model, Locale locale, @ModelAttribute SignupForm form) {
+	public String getSignup(Model model, Locale locale, @ModelAttribute SignupForm form) {
 		// 性別を登録
 		Map<String,Integer> genderMap = userApplicationService.getGenderMap(locale);
 		model.addAttribute("genderMap", genderMap);
@@ -50,11 +50,11 @@ public class SignupController {
 	
 	/** ユーザー登録処理  */
 	@PostMapping("/signup")
-	public String postSignUp(Model model, Locale locale, @ModelAttribute @Validated(GroupOrder.class) SignupForm form, BindingResult bindingResult) {
+	public String postSignup(Model model, Locale locale, @ModelAttribute @Validated(GroupOrder.class) SignupForm form, BindingResult bindingResult) {
 		// 入力チェック
 		if(bindingResult.hasErrors()) {
 			// 入力エラーがあった場合、ユーザー情報登録画面に戻る
-			return getSignUp(model, locale, form);
+			return getSignup(model, locale, form);
 		}
 		
 		log.info(form.toString());
@@ -64,7 +64,7 @@ public class SignupController {
 		MUser user = modelMapper.map(form, MUser.class);
 		
 		// ユーザー登録
-		userService.signUp(user);
+		userService.signup(user);
 		
 		// ログイン画面にリダイレクト
 		return "redirect:/login";

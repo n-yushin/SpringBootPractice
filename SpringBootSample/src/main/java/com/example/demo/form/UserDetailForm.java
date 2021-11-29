@@ -13,7 +13,7 @@ public class UserDetailForm {
 	private String userName;
 	@DateTimeFormat(pattern="yyyy/MM/dd")
 	private Date birthday;
-	private int age;
-	private int gender;
+	private Integer age;
+	private Integer gender;
 
 }
