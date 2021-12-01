@@ -43,7 +43,22 @@
     select * from m_user
   </select>
   <!-- ユーザー取得（一件） -->
+  <!-- resultMapは戻り値から取得する値とオブジェクトの項目マッピングをするっぽいね -->
   <select id="findOne" resultMap="user">
     select * from m_user where user_id = #{userId}
   </select>
+  <!-- ユーザー更新（一件） -->
+  <update id="updateOne">
+    update
+     m_user
+    set
+      password = #{password},
+      user_name = #{userName} 
+    where
+      user_id = #{userId}
+  </update>
+  <!-- ユーザー削除（一件） -->
+  <delete id="deleteOne">
+    delete from m_user where user_id = #{userId}
+  </delete>
 </mapper>
