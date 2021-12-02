@@ -40,7 +40,18 @@
   <!-- ユーザー取得 -->
   <!-- selectでは戻り値をresultTypeで指定するんだね -->
   <select id="findMany" resultType="MUser">
-    select * from m_user
+    select 
+      *
+    from 
+      m_user
+    <where>
+      <if test="userId != null">
+        user_id like '%' || #{userId} || '%'
+      </if>
+      <if test="userName != null" >
+        and user_name like '%' || #{userName} || '%'
+      </if>
+    </where>
   </select>
   <!-- ユーザー取得（一件） -->
   <!-- resultMapは戻り値から取得する値とオブジェクトの項目マッピングをするっぽいね -->

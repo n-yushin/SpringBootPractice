@@ -10,6 +10,7 @@ public class LoginController {
 	/** ログイン画面を表示 */
 	@GetMapping("/login")
 	public String getLogin() {
+		System.out.println("test");
 		return "login/login";
 	}
 	
