@@ -18,19 +18,15 @@
         <!-- 検索 -->
         <div>
             <form class="form-inline" id="user-search-form" method="post" th:action="@{/user/list}" th:object="${userListForm}">
-                <div class="user-search-component">
-                    <div class="form-group">
-                        <label for="userId" class="mr-2">ユーザーID</label>
-                        <input type="text" th:field="*{userId}" maxlength="50" />
-                    </div>
-                    <div class="form-group mx-sm-3">
-                        <label for="userName" class="mr-2">ユーザー名</label>
-                        <input type="text" th:field="*{userName}" maxlength="50" />
-                    </div>
-
-                    <button class="btn btn-primary" type="submit">検索</button>
-
+                <div class="form-group">
+                    <label for="userId" class="mr-2">ユーザーID</label>
+                    <input type="text" class="form-controll" th:field="*{userId}" />
                 </div>
+                <div class="form-group mx-sm-3">
+                    <label for="userName" class="mr-2">ユーザー名</label>
+                    <input type="text" class="form-controll" th:field="*{userName}" maxlength="50" />
+                </div>
+                <button class="btn btn-primary" type="submit">検索</button>
             </form>
         </div>
         <!-- 一覧表示 -->
