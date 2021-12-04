@@ -7,4 +7,4 @@ INSERT INTO m_user(user_id,password,user_name,birthday,age,gender,department_id,
 INSERT INTO m_department(department_id,department_name) VALUES(1,'システム管理部'),(2,'営業部');
 
 /* 給料テーブル */
-INSERT INTO t_salary(user_id,year_month,salary) VALUES('user@co.jp', '2020/11', 280000) , ('user@co.jp', '2020/ 12', 290000) , ('user@co.jp', '2021/01', 300000);
+INSERT INTO t_salary(user_id,year_month,salary) VALUES('user@co.jp', '2020/11', 280000) , ('user@co.jp', '2020/12', 290000) , ('user@co.jp', '2021/01', 300000);

@@ -1,8 +1,12 @@
 package com.example.demo.form;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.example.demo.domain.user.model.Department;
+import com.example.demo.domain.user.model.Salary;
 
 import lombok.Data;
 
@@ -11,9 +15,9 @@ public class UserDetailForm {
 	private String userId;
 	private String password;
 	private String userName;
-	@DateTimeFormat(pattern="yyyy/MM/dd")
 	private Date birthday;
 	private Integer age;
 	private Integer gender;
-
+	private Department department;
+	private List<Salary> salaryList;
 }
