@@ -32,7 +32,7 @@ public class UserDetailController {
 		
 		// ユーザー情報を取得
 		MUser user = userService.getUserOne(userId);
-//		user.setPassword(null);
+		user.setPassword(null);
 		
 		// MUserをformに変換
 		form = modelMapper.map(user, UserDetailForm.class);
@@ -52,8 +52,13 @@ public class UserDetailController {
 	// パラメータはparams要素で渡すんですね
 	@PostMapping(value="/detail", params="update")
 	public String updateUser(UserDetailForm form, Model model) {
-		userService.updateUserOne(form.getUserId(), form.getPassword(), form.getUserName());
 		
+		try {
+			userService.updateUserOne(form.getUserId(), form.getPassword(), form.getUserName());
+		}catch (Exception e) {
+			log.error("ユーザー更新でエラー");
+			log.error(e.toString());
+		}
 		return "redirect:/user/list";
 	}
 	
